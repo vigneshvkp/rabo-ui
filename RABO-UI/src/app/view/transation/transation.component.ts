@@ -12,7 +12,6 @@ import {JsonEditorOptions} from 'ang-jsoneditor';
 export class TransationComponent implements OnInit {
 
 
-  reload = true;
   transaction: any = [];
   result: Result;
   file: any;
@@ -32,6 +31,7 @@ export class TransationComponent implements OnInit {
     this.result = new Result();
   }
 
+  /* make api call for getting transaction error detail*/
   sendData() {
     this.transactionService.saveTransaction(this.transaction).subscribe(res => {
       this.result = res;
@@ -42,18 +42,15 @@ export class TransationComponent implements OnInit {
     });
   }
 
-  previewFile(e: any) {
-    this.file = null;
-    console.log('e- ', e);
+  /* Called from Upload file control*/
+  uploadFile(e: any) {
     this.file = e.target.files[0];
-    this.uploadDocument(this.file);
+    this.loadDocumentFromFile(this.file);
     e.target.value = '';
   }
 
-  uploadDocument(file) {
-    console.log('file - ', file);
-    this.reload = false;
-    this.reload = true;
+  /* To read the file and load the content to the transaction variable */
+  private loadDocumentFromFile(file) {
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       try {
@@ -62,13 +59,13 @@ export class TransationComponent implements OnInit {
         alert('Invalid Json File');
       }
     };
-    fileReader.readAsText(this.file);
+    fileReader.readAsText(file);
 
   }
 
   changeLog(event = null) {
     if (event != null && event.type === 'change') {
-
+    console.log('Not impl');
     } else {
       this.transaction = event;
     }

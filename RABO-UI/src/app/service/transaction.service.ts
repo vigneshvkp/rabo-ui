@@ -20,4 +20,5 @@ export class TransactionService {
   get transactionPostUrl() {
     return environment.transaction + '/statement';
   }
+
 }
