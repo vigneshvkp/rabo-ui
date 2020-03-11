@@ -1,0 +1,10 @@
+
+<div class="header">
+  <a href="#default" class="logo">RABO Bank</a>
+  <div class="header-right">
+    <a (click)="navigate('home')" [ngClass]="activeMenu === '/home' ? 'active': ''" class="menu">Home</a>
+    <a (click)="navigate('transaction')"  [ngClass]="activeMenu=== '/transaction' ? 'active': ''" class="menu">Transaction</a>
+    <a href="#about">About</a>
+  </div>
+</div>
+

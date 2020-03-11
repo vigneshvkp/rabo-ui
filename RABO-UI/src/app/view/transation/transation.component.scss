@@ -1,0 +1,82 @@
+.block {
+  background: #c9c9c9;
+  width: max-content;
+  padding: 10px 13px;
+  border-radius: 8px;
+  margin-top: 6px;
+
+  &:hover {
+    background: #9a9999;
+    top: -1px;
+    right: -1px;
+    cursor: pointer;
+  }
+}
+
+.success-header {
+  margin-bottom: 1.2em;
+  margin-left: -1em;
+}
+
+.inputfile {
+  margin-left: 1em;
+}
+
+.hidelabel {
+  position: relative;
+  left: -12em;
+  background: white;
+  top: 3px;
+}
+
+.verify-btn {
+  right: 1em;
+  position: absolute;
+  bottom: -3em;
+  border-radius: 3px;
+}
+
+.response-header {
+
+  color: black;
+  /* height: 2em; */
+  margin-left: 0px;
+  padding: 3px;
+}
+
+.container {
+  margin-top: 2em;
+}
+
+.result {
+  background: #62616991;
+  font-size: 20px;
+  border-radius: .5em;
+  height: 2em;
+}
+
+.ace_editor.ace-jsoneditor {
+  min-height: 500px;
+}
+
+.left {
+  margin-left: 2em;
+}
+
+//
+.right {
+  margin-left: 2em;
+}
+
+:host ::ng-deep json-editor,
+:host ::ng-deep json-editor .jsoneditor,
+:host ::ng-deep json-editor > div,
+:host ::ng-deep json-editor jsoneditor-outer {
+  height: 65vh;
+  border-color: #626169;
+}
+
+:host ::ng-deep .jsoneditor-menu {
+  background-color: #626169;
+  border-bottom: 1px solid #626169;
+}
