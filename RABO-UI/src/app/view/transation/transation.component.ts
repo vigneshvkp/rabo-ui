@@ -12,14 +12,14 @@ import {JsonEditorOptions} from 'ang-jsoneditor';
 export class TransationComponent implements OnInit {
 
 
-  transaction: any = [];
-  result: Result;
   file: any;
+  result: Result;
   options = new JsonEditorOptions();
   options2 = new JsonEditorOptions();
 
   constructor(private transactionService: TransactionService) {
-    this.transaction.push(new Transaction());
+    this.transactionService.fileData = [];
+    this.transactionService.fileData.push(new Transaction());
     this.options2.language = 'en';
     this.options.mode = 'code';
     this.options2.mode = 'text';
@@ -31,9 +31,8 @@ export class TransationComponent implements OnInit {
     this.result = new Result();
   }
 
-  /* make api call for getting transaction error detail*/
   sendData() {
-    this.transactionService.saveTransaction(this.transaction).subscribe(res => {
+    this.transactionService.saveTransaction(this.transactionService.fileData).subscribe(res => {
       this.result = res;
     }, error1 => {
       this.result.result = error1.error.error;
@@ -42,32 +41,20 @@ export class TransationComponent implements OnInit {
     });
   }
 
-  /* Called from Upload file control*/
-  uploadFile(e: any) {
+  onUploadFile(e: any): any {
+    this.file = null;
     this.file = e.target.files[0];
-    this.loadDocumentFromFile(this.file);
     e.target.value = '';
+    this.transactionService.loadContentFromFile(this.file);
   }
 
-  /* To read the file and load the content to the transaction variable */
-  private loadDocumentFromFile(file) {
-    const fileReader = new FileReader();
-    fileReader.onload = (e) => {
-      try {
-        this.transaction = JSON.parse(fileReader.result.toString());
-      } catch (e) {
-        alert('Invalid Json File');
-      }
-    };
-    fileReader.readAsText(file);
-
-  }
 
   changeLog(event = null) {
+    console.log('eee -', event);
     if (event != null && event.type === 'change') {
-    console.log('Not impl');
+        // it is an un wanted event so ignoring it.
     } else {
-      this.transaction = event;
+      this.transactionService.fileData = event;
     }
   }
 

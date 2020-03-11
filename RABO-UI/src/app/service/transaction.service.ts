@@ -9,6 +9,8 @@ import {environment} from '../../environments/environment';
 })
 export class TransactionService {
 
+  public fileData: any;
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -19,6 +21,20 @@ export class TransactionService {
 
   get transactionPostUrl() {
     return environment.transaction + '/statement';
+  }
+
+  loadContentFromFile(file): any {
+    const fileReader = new FileReader();
+
+    fileReader.readAsText(file);
+    fileReader.onload = (e) => {
+      try {
+        this.fileData = JSON.parse(fileReader.result.toString());
+        return this.fileData;
+      } catch (e) {
+        alert('Invalid Json File');
+      }
+    };
   }
 
 }

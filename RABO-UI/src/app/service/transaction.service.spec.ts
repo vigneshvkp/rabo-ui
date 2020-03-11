@@ -7,9 +7,6 @@ import {HttpClient, HttpEvent, HttpEventType} from '@angular/common/http';
 
 describe('TransactionService', () => {
 
-  // let transactionService: TransactionService;
-  // let httpMock: HttpTestingController;
-  // let httpClient: HttpClient;
   const mockUsers = [
     {result: 'Successfull', errorRecords: ''},
     {result: 'Juliette', errorRecords: ''}
@@ -26,20 +23,10 @@ describe('TransactionService', () => {
         HttpClientTestingModule,
         RouterTestingModule,
       ],
-      providers: [
-        // {provide: TransactionService, useValue: transactionServiceStub}
-        // {provide: TransactionService}
-      ]
+      providers: []
     });
 
-    // transactionService = TestBed.get(TransactionService);
-    // httpMock = TestBed.get(HttpTestingController);
-    // httpClient = TestBed.get(HttpClient);
   });
-
-  // afterEach(() => {
-  //   httpMock.verify();
-  // });
 
   it('should be created', () => {
     const service: TransactionService = TestBed.get(TransactionService);

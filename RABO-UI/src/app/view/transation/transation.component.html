@@ -2,11 +2,11 @@
   <div class="col-md-6 left">
 
     <div class="row mb-3">
-      <input type='file' (change)="uploadFile($event)" name="file" id="file" class="inputfile">
+      <input type='file' (change)="onUploadFile($event)" name="file" id="file" class="inputfile">
       <div class="hidelabel"><b>Upload your file here</b>
       </div>
     </div>
-    <json-editor #editorJson [options]="options2" [data]="transaction" (change)="changeLog($event)"
+    <json-editor #editorJson [options]="options2" [data]="transactionService.fileData" (change)="changeLog($event)"
                  style="min-height: 20em;"></json-editor>
     <div>
     <button (click)="sendData()" class="btn btn-secondary verify-btn">Verify Transaction Detail</button>
@@ -17,18 +17,15 @@
     <div class="success-header"><b>Response on Change JSON</b></div>
     <div class="result row col-md-12"><p class="response-header">Result : {{result.result}}</p></div>
     <div *ngFor="let error of result.errorRecords">
-      <div class="block row col-md-12">
+      <div class="block row col-md-12" *ngIf="result.errorRecords && result.errorRecords.length>0">
         <div>Reference : {{ error.reference}}</div>
         <div style="margin-left: 1em">AccountNumber : {{ error.accountNumber}}</div>
       </div>
       <div style="background: white; height: 2px"></div>
     </div>
 
-    <div class="block row col-md-12" *ngIf="result.errorRecords.length <=0">
-      <div *ngIf="result.message && result.message !== ''">
+    <div class="block row col-md-12" *ngIf="result.errorRecords.length <=0 && result.message && result.message !== ''">
         <div>Message : {{ result.message}}</div>
-      </div>
-<!--      No Error Record-->
     </div>
   </div>
 </div>
