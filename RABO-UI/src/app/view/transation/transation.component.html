@@ -9,7 +9,7 @@
     <json-editor #editorJson [options]="options2" [data]="transactionService.fileData" (change)="changeLog($event)"
                  style="min-height: 20em;"></json-editor>
     <div>
-    <button (click)="sendData()" class="btn btn-secondary verify-btn">Verify Transaction Detail</button>
+    <button (click)="sendData()" [disabled]="!isValidJson" class="btn btn-secondary verify-btn">Verify Transaction Detail</button>
     </div>
 
   </div>

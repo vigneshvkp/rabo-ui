@@ -58,12 +58,6 @@ describe('TransationComponent', () => {
     expect(service.saveTransaction).toHaveBeenCalled();
   }));
 
-  it('On Error in Save', fakeAsync(() => {
-    const service: TransactionService = TestBed.get(TransactionService);
-    const spy = spyOn(service, 'saveTransaction').and.returnValue(null);
-    component.sendData();
-    expect(service.saveTransaction).toHaveBeenCalled();
-  }));
 
   it('On Upload File check', fakeAsync(() => {
     const service: TransactionService = TestBed.get(TransactionService);
@@ -83,6 +77,6 @@ describe('TransationComponent', () => {
     eve.target.files = [];
     eve.target.files.push(new Object());
     component.changeLog(eve);
-    expect(service.fileData.equals(eve));
+    expect(service.fileData).toEqual(eve);
   }));
 });

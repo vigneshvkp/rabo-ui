@@ -12,6 +12,7 @@ import {JsonEditorOptions} from 'ang-jsoneditor';
 export class TransationComponent implements OnInit {
 
 
+  isValidJson = true;
   file: any;
   result: Result;
   options = new JsonEditorOptions();
@@ -24,7 +25,7 @@ export class TransationComponent implements OnInit {
     this.options.mode = 'code';
     this.options2.mode = 'text';
     this.options2.modes = this.options.modes = ['code', 'text', 'tree', 'view'];
-    this.options2.statusBar = this.options.statusBar = false;
+    this.options2.statusBar = this.options.statusBar = true;
   }
 
   ngOnInit() {
@@ -52,7 +53,7 @@ export class TransationComponent implements OnInit {
   changeLog(event = null) {
     console.log('eee -', event);
     if (event != null && event.type === 'change') {
-        // it is an un wanted event so ignoring it.
+      // it is an un wanted event so ignoring it.
     } else {
       this.transactionService.fileData = event;
     }
