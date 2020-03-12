@@ -21,7 +21,8 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should navigate without error', () => {
+    component.navigate('/home');
     expect(component).toBeTruthy();
   });
 });

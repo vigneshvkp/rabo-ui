@@ -16,16 +16,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.activeMenu = this.router.url;
-    console.log('this.activeMenu - ', this.activeMenu);
     this.router.events.pipe(filter(e => e instanceof RouterEvent)
     ).subscribe((e: any) => {
       this.activeMenu = e.url;
-      console.log(e.id, e.url);
     });
   }
 
   navigate(s: string) {
-
     this.router.navigateByUrl(s);
   }
 }
