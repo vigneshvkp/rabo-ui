@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {Transaction} from '../../model/transaction.model';
 import {TransactionService} from '../../service/transaction.service';
 import {Result} from '../../model/result.model';
-import {JsonEditorOptions} from 'ang-jsoneditor';
+import {JsonEditorComponent, JsonEditorOptions} from 'ang-jsoneditor';
+
 
 @Component({
   selector: 'app-transation',
@@ -11,6 +12,7 @@ import {JsonEditorOptions} from 'ang-jsoneditor';
 })
 export class TransationComponent implements OnInit {
 
+  @ViewChild(JsonEditorComponent, {static: true}) editor: JsonEditorComponent;
 
   isValidJson = true;
   file: any;
@@ -27,6 +29,7 @@ export class TransationComponent implements OnInit {
     this.options2.modes = this.options.modes = ['code', 'text', 'tree', 'view'];
     this.options2.statusBar = this.options.statusBar = true;
   }
+
 
   ngOnInit() {
     this.result = new Result();

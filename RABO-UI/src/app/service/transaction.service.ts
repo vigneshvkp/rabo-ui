@@ -24,12 +24,12 @@ export class TransactionService {
   }
 
   loadContentFromFile(file): any {
+    this.fileData = null;
     const fileReader = new FileReader();
 
     fileReader.readAsText(file);
     fileReader.onload = (e) => {
       try {
-        console.log('--------', fileReader.result.toString());
         this.fileData = JSON.parse(fileReader.result.toString());
         return this.fileData;
       } catch (e) {
