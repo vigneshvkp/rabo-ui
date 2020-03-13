@@ -56,12 +56,10 @@ export class TransationComponent implements OnInit {
 
   changeLog(event = null) {
 
-    console.log('eee -', event);
     if (event != null && event.type === 'change') {
       // it is an un wanted event so ignoring it.
     } else {
       this.transactionService.fileData = event;
-
     }
   }
 
