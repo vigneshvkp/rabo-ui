@@ -14,7 +14,7 @@ export class TransationComponent implements OnInit {
 
   @ViewChild(JsonEditorComponent, {static: true}) editor: JsonEditorComponent;
 
-  isValidJson = true;
+  isValidJson = false;
   file: any;
   result: Result;
   options = new JsonEditorOptions();
@@ -46,6 +46,7 @@ export class TransationComponent implements OnInit {
   }
 
   onUploadFile(e: any): any {
+    this.isValidJson = true;
     this.file = null;
     this.file = e.target.files[0];
     e.target.value = '';
@@ -54,11 +55,13 @@ export class TransationComponent implements OnInit {
 
 
   changeLog(event = null) {
+
     console.log('eee -', event);
     if (event != null && event.type === 'change') {
       // it is an un wanted event so ignoring it.
     } else {
       this.transactionService.fileData = event;
+
     }
   }
 
