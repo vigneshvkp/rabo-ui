@@ -10,7 +10,7 @@ body {
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 20px 10px;
+  padding: 2px 10px;
 }
 
 .header a {
@@ -35,14 +35,27 @@ body {
 }
 
 .header a.active {
-  background-color: dodgerblue;
+  background-color: #626169;
   color: white;
+  padding: 7px;
+  text-align: center;
+  margin: 3px;
 }
 
+.logo{
+  height: 4em;
+  position: absolute;
+  left: 1em;
+  top: 0;
+}
 .header-right {
   float: right;
 }
 
+.header-left {
+  float: left;
+  margin-left: 2em;
+}
 @media screen and (max-width: 500px) {
   .header a {
     float: none;
