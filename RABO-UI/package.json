@@ -24,7 +24,7 @@
     "ang-jsoneditor": "^1.9.1",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "jsoneditor": "^8.6.1",
+    "jsoneditor": "^9.5.6",
     "ngx-json-viewer": "^2.4.0",
     "primeicons": "^2.0.0",
     "primeng": "^8.0.2",
